@@ -1,6 +1,15 @@
 # Table of contents
 
-* [jtable-docs](README.md)
+## jTable Documentation
+
+## Getting Started
+
+* [Installation](README.md)
+* [Introduction](getting-started/introduction.md)
+* [Quick Start](getting-started/quick-start.md)
+
+***
+
 * [jTable Documentation](jtable-docs/README.md)
   * [getting-started](jtable-docs/getting-started/README.md "Getting Started")
     * [Installation](jtable-docs/getting-started/installation.md)
