@@ -1,4 +1,4 @@
-# jTable API Reference — Actions
+# Actions
 
 Actions define how the jTable client communicates with the server. All action definitions go inside the `actions` object:
 
@@ -11,23 +11,16 @@ $('#MyTableContainer').jtable({
 });
 ```
 
-**Table of Contents**
-
-- [listAction](#listaction)
-- [createAction](#createaction)
-- [updateAction](#updateaction)
-- [deleteAction](#deleteaction)
-
 Each action can be set to either a **URL string** or a **function**.
 
----
+***
 
 ## listAction
 
-| | |
-|---|---|
-| **Type** | URL string or function |
-| **Default** | none |
+|             |                        |
+| ----------- | ---------------------- |
+| **Type**    | URL string or function |
+| **Default** | none                   |
 
 Defines how to retrieve the list of records.
 
@@ -49,20 +42,20 @@ jTable sends an AJAX **POST** to the URL when `load()` is called. The server mus
 
 **Supported date formats for record fields:**
 
-| Format | Example |
-|---|---|
-| `/Date(ms)/` | `/Date(1320259705710)/` |
-| `YYYY-MM-DD HH:MM:SS` | `2012-01-03 21:40:42` |
-| `YYYY-MM-DD` | `2012-01-03` |
+| Format                | Example                 |
+| --------------------- | ----------------------- |
+| `/Date(ms)/`          | `/Date(1320259705710)/` |
+| `YYYY-MM-DD HH:MM:SS` | `2012-01-03 21:40:42`   |
+| `YYYY-MM-DD`          | `2012-01-03`            |
 
 #### Paging
 
 When paging is enabled, jTable adds these query parameters:
 
-| Parameter | Description |
-|---|---|
+| Parameter      | Description                                  |
+| -------------- | -------------------------------------------- |
 | `jtStartIndex` | Zero-based start index for the current page. |
-| `jtPageSize` | Maximum number of records to return. |
+| `jtPageSize`   | Maximum number of records to return.         |
 
 The response must also include `TotalRecordCount` (total records across all pages).
 
@@ -70,8 +63,8 @@ The response must also include `TotalRecordCount` (total records across all page
 
 When sorting is enabled, jTable adds:
 
-| Parameter | Example |
-|---|---|
+| Parameter   | Example                                                                       |
+| ----------- | ----------------------------------------------------------------------------- |
 | `jtSorting` | `'Name ASC'`, `'BirthDate DESC'`, or `'CityId DESC,Name ASC'` for multi-sort. |
 
 **Server-side examples (paged + sorted):**
@@ -141,20 +134,20 @@ listAction: function (postData, jtParams) {
 
 Function arguments:
 
-| Argument | Description |
-|---|---|
-| `postData` | The data passed to `load()` by the caller. |
-| `jtParams.jtStartIndex` | Start index for paging. |
-| `jtParams.jtPageSize` | Page size for paging. |
-| `jtParams.jtSorting` | Sorting string. |
+| Argument                | Description                                |
+| ----------------------- | ------------------------------------------ |
+| `postData`              | The data passed to `load()` by the caller. |
+| `jtParams.jtStartIndex` | Start index for paging.                    |
+| `jtParams.jtPageSize`   | Page size for paging.                      |
+| `jtParams.jtSorting`    | Sorting string.                            |
 
----
+***
 
 ## createAction
 
-| | |
-|---|---|
-| **Type** | URL string or function |
+|             |                                                   |
+| ----------- | ------------------------------------------------- |
+| **Type**    | URL string or function                            |
 | **Default** | none (optional — omit to disable record creation) |
 
 Defines how to save a new record. jTable sends an AJAX **POST** with the form values when the user submits the create form.
@@ -213,13 +206,13 @@ echo json_encode(['Result' => 'OK', 'Record' => $row]);
 
 Identical pattern to `listAction` — return the result directly or via a Deferred promise.
 
----
+***
 
 ## updateAction
 
-| | |
-|---|---|
-| **Type** | URL string or function |
+|             |                                                |
+| ----------- | ---------------------------------------------- |
+| **Type**    | URL string or function                         |
 | **Default** | none (optional — omit to hide the edit button) |
 
 Defines how to save changes to an existing record. jTable sends an AJAX **POST** with all form field values.
@@ -282,13 +275,13 @@ echo json_encode(['Result' => 'OK']);
 
 Identical pattern to `listAction`.
 
----
+***
 
 ## deleteAction
 
-| | |
-|---|---|
-| **Type** | URL string or function |
+|             |                                                  |
+| ----------- | ------------------------------------------------ |
+| **Type**    | URL string or function                           |
 | **Default** | none (optional — omit to hide the delete button) |
 
 Defines how to delete a record. jTable sends an AJAX **POST** with the record's key value.
