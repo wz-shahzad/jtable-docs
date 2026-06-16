@@ -11,15 +11,12 @@
 ## Themes UI
 
 * [Overview](jtable-docs/themes-ui/overview.md)
-* [Bootstrap 5](jtable-docs/themes-ui/bootstrap5.md)
-* [Overview](jtable-docs/themes-ui/overview.md)
 * [Legacy](jtable-docs/themes-ui/legacy.md)
-* [Bootstrap 5](jtable-docs/themes-ui/bootstrap5.md)
 * [Bootstrap 4](jtable-docs/themes-ui/bootstrap4.md)
+* [Bootstrap 5](jtable-docs/themes-ui/bootstrap5.md)
 * [Bulma](jtable-docs/themes-ui/bulma.md)
 * [Fomantic UI](jtable-docs/themes-ui/fomantic-ui.md)
 * [Semantic UI](jtable-docs/themes-ui/semantic-ui.md)
-* [Materialize](jtable-docs/themes-ui/materialize.md)
 * [UIkit](jtable-docs/themes-ui/uikit.md)
 * [Custom Adapter](jtable-docs/themes-ui/custom-adapter.md)
 
