@@ -1,117 +1,128 @@
 # Bootstrap 5 Theme
 
-jTable's Bootstrap 5 adapter renders all UI components — table, dialogs, buttons, inputs — using native Bootstrap 5 classes.
+jTable's Bootstrap 5 adapter renders all UI components using native Bootstrap 5 classes. Date fields use bootstrap-datepicker. Full RTL support is included.
 
 ---
 
-## Prerequisites
+## Dependencies
 
-Bootstrap 5 must be loaded before jTable. jQuery is still required.
+| Library | Version | CDN |
+|---|---|---|
+| jQuery | 3.6.0 | `ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js` |
+| Bootstrap | 5.1.3 | `cdn.jsdelivr.net/npm/bootstrap@5.1.3` |
+| Bootstrap Datepicker | 1.10.0 | `cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0` |
+| Bootstrap Icons | 1.7.0 | `cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0` |
+
+---
+
+## Setup
 
 ```html
-<!-- Bootstrap 5 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap 5 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.0/font/bootstrap-icons.css" />
 
-<!-- jQuery (required by jTable) -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<!-- jTable Bootstrap 5 CSS -->
+<link href="~/dev/ui/bootstrap/jtable.ui.bootstrap-5.css" rel="stylesheet" />
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"></script>
 
 <!-- jTable core -->
-<script src="/scripts/jtable/jquery.jtable.js"></script>
+<script src="~/dev/jquery.jtable-vnext.js"></script>
 
-<!-- jTable Bootstrap 5 theme -->
-<link rel="stylesheet" href="/scripts/jtable/themes/bootstrap5/jtable.css" />
+<!-- jTable Bootstrap 5 adapter -->
+<script src="~/dev/ui/bootstrap/jquery.jtable.ui.bootstrap-5.js"></script>
 ```
-
-> **Note:** Load Bootstrap JS **before** jQuery when using Bootstrap 5, as Bootstrap's bundle is self-contained.
 
 ---
 
 ## Initialization
 
-Pass `ui: 'bootstrap5'` in the options:
-
 ```javascript
-$('#StudentsTable').jtable({
-    title: 'Students',
-    ui: 'bootstrap5',
-    paging: true,
-    pageSize: 10,
-    sorting: true,
-    actions: {
-        listAction:   '/api/students/list',
-        createAction: '/api/students/create',
-        updateAction: '/api/students/update',
-        deleteAction: '/api/students/delete'
-    },
-    fields: {
-        StudentId: { key: true, list: false },
-        Name:      { title: 'Name',  width: '30%' },
-        Email:     { title: 'Email', width: '35%' },
-        IsActive:  {
-            title: 'Active',
-            width: '15%',
-            type: 'checkbox',
-            values: { 'false': 'Passive', 'true': 'Active' }
+$(document).ready(function () {
+    $('#MyTableContainer').jtable({
+        title: 'My Table',
+        paging: true,
+        sorting: true,
+        multiSorting: true,
+        pageSize: 10,
+        columnResizable: false,
+        columnSelectable: true,
+        defaultSorting: 'name ASC',
+        progressBarClass: 'bg-info',
+        selecting: true,
+        multiselect: true,
+        selectingCheckboxes: true,
+        actions: {
+            listAction:   '/api/list',
+            createAction: '/api/create',
+            updateAction: '/api/update',
+            deleteAction: '/api/delete'
+        },
+        fields: {
+            id:   { key: true, create: false, edit: false, list: false },
+            name: { title: 'Name', width: '30%' }
         }
-    }
+    });
+
+    $('#MyTableContainer').jtable('load');
 });
-
-$('#StudentsTable').jtable('load');
 ```
 
 ---
 
-## Customizing Colors
+## RTL Support
 
-Override the design tokens after loading the theme CSS:
+Bootstrap 5 includes a dedicated RTL CSS build. To enable right-to-left layout:
 
-```css
-/* your-overrides.css */
-:root {
-    --jt-primary:       #0d6efd;   /* Bootstrap blue (default) */
-    --jt-primary-hover: #0b5ed7;
-    --jt-header-bg:     #212529;   /* Dark header */
-    --jt-header-color:  #ffffff;
-    --jt-row-hover-bg:  #f8f9fa;
-}
+**1. Use the Bootstrap RTL stylesheet:**
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css" />
 ```
 
----
-
-## Using Bootstrap Form Validation
-
-You can integrate Bootstrap's validation styles with the `inputClass` field option and the `formSubmitting` event:
+**2. Set the HTML direction and add `isRtl: true` to jTable:**
 
 ```javascript
-fields: {
-    Name: {
-        title: 'Name',
-        width: '30%',
-        inputClass: 'form-control'  // already applied by adapter; shown for clarity
-    }
-},
+$('html').attr({ 'lang': 'ar', 'dir': 'rtl' });
 
+$('#MyTableContainer').jtable({
+    isRtl: true,
+    // ... other options
+});
+```
+
+**3. Apply `dir="rtl"` to the container:**
+
+```html
+<div id="MyTableContainer" dir="rtl"></div>
+```
+
+---
+
+## Bootstrap Form Validation
+
+Integrate Bootstrap 5's built-in validation with `formSubmitting`:
+
+```javascript
 formSubmitting: function (event, data) {
-    // Add Bootstrap was-validated class to show inline errors
     data.form.addClass('was-validated');
-
-    // Return false to cancel submit if invalid
     if (!data.form[0].checkValidity()) {
-        return false;
+        return false; // cancel submit
     }
 }
 ```
 
 ---
 
-## Modal Size
+## Notes
 
-The create/edit dialog uses Bootstrap's modal component. You can control the size via CSS:
-
-```css
-/* Wide dialog */
-.jtable-dialog .modal-dialog {
-    max-width: 700px;
-}
-```
+- `progressBarClass: 'bg-info'` (or any Bootstrap background utility) controls the loading bar color.
+- For child table form inputs, add `inputClass: 'form-control'` per field for consistent Bootstrap styling.
+- jquery-migrate may be needed in some environments: `cdn.iu.edu.sa/iu-v.2.9.3/js/jquery-migrate.js`.

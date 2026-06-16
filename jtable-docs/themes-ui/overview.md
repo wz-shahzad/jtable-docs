@@ -1,80 +1,84 @@
 # Themes & UI Overview
 
-jTable supports multiple UI frameworks through a pluggable adapter system. Pick the adapter that matches your project's CSS framework.
+jTable supports multiple CSS frameworks through a pluggable UI adapter system. Each adapter provides a complete set of styles and component behaviors matching the target framework.
 
 ---
 
-## Available Adapters
+## Available Themes
 
-| Adapter | CSS Framework | Status |
-|---|---|---|
-| `bootstrap5` | Bootstrap 5 | ✅ Stable |
-| `bootstrap4` | Bootstrap 4 | ✅ Stable |
-| `bulma` | Bulma | ✅ Stable |
-| `semantic` | Semantic UI / Fomantic UI | ✅ Stable |
-| `uikit` | UIKit 3 | ✅ Stable |
-| `materialize` | Materialize CSS | ✅ Stable |
-| `legacy` | Original jTable theme | ✅ Stable |
-
----
-
-## How Adapters Work
-
-An adapter is a small JavaScript module that tells jTable how to render its UI components — buttons, modals, inputs, table markup — using a specific CSS framework's classes and patterns.
-
-You select an adapter via the `ui` option:
-
-```javascript
-$('#MyTable').jtable({
-    ui: 'bootstrap5',
-    // ...
-});
-```
-
-Without the `ui` option, jTable falls back to `legacy` mode (original look).
+| Theme | Framework | Date Picker | RTL Support | Adapter File |
+|---|---|---|---|---|
+| [Bootstrap 5](bootstrap5.md) | Bootstrap 5 | bootstrap-datepicker | ✅ | `jquery.jtable.ui.bootstrap-5.js` |
+| [Bootstrap 4](bootstrap4.md) | Bootstrap 4 | bootstrap-datepicker | ✅ | `jquery.jtable.ui.bootstrap-4.js` |
+| [Bulma](bulma.md) | Bulma 1.x | bulma-calendar | ❌ | `jquery.jtable.ui.bulma.js` |
+| [Fomantic UI](fomantic-ui.md) | Fomantic UI 2.9 | built-in | ❌ | `jquery.jtable.ui.fomantic-ui.js` |
+| [Semantic UI](semantic-ui.md) | Fomantic UI 2.5 | built-in | ❌ | `jquery.jtable.ui.semantic-ui.js` |
+| [Materialize](materialize.md) | Materialize 2.x | bootstrap-datepicker | ❌ | `jquery.jtable.ui.materialize-ui.js` |
+| [UIkit](uikit.md) | UIkit 3 | flatpickr | ❌ | `jquery.jtable.ui.uikit-ui.js` |
+| [Legacy](legacy.md) | jQuery UI | jQuery UI datepicker | ❌ | `jquery.jtable.ui.legacy-ui.js` |
 
 ---
 
-## Design Tokens
+## How the Adapter System Works
 
-Every adapter ships with CSS custom properties (variables) prefixed with `--jt-`. Override them in your own stylesheet to rebrand jTable without touching any source files:
+Every adapter is a small JS file that tells jTable how to render its components — tables, dialogs, buttons, inputs — using a specific framework's classes and patterns.
 
-```css
-:root {
-    --jt-primary:        #6d28d9;   /* Main action color */
-    --jt-primary-hover:  #5b21b6;   /* Hover state */
-    --jt-header-bg:      #1e1b4b;   /* Table header background */
-    --jt-header-color:   #ffffff;   /* Table header text */
-    --jt-border-color:   #e5e7eb;   /* Table borders */
-    --jt-row-hover-bg:   #f5f3ff;   /* Row hover background */
-    --jt-font-size:      0.875rem;  /* Base font size */
-}
+**Include order for any theme:**
+
+```html
+<!-- 1. Framework CSS -->
+<!-- 2. jTable theme CSS  (dev/ui/<Theme>/jtable.ui.<theme>.css) -->
+<!-- 3. jQuery -->
+<!-- 4. Framework JS -->
+<!-- 5. jTable core  (dev/jquery.jtable-vnext.js) -->
+<!-- 6. jTable adapter JS  (dev/ui/<Theme>/jquery.jtable.ui.<theme>.js) -->
 ```
 
 ---
 
-## Included Theme Files
+## Common Options Across All Themes
 
-Each adapter ships with a matching CSS file:
+These options work the same regardless of theme:
 
-```
-dist/
-└── themes/
-    ├── bootstrap5/    jtable.css
-    ├── bootstrap4/    jtable.css
-    ├── bulma/         jtable.css
-    ├── semantic/      jtable.css
-    ├── uikit/         jtable.css
-    ├── materialize/   jtable.css
-    └── legacy/        jtable.css
-                       jtable_list_limited.css
-```
-
-Include **only** the theme file for the adapter you are using.
+| Option | Description |
+|---|---|
+| `smallSize: true` | Compact row height (supported by most adapters) |
+| `isRtl: true` | Right-to-left layout (Bootstrap 5 only) |
+| `columnResizable: false` | Disable column drag-to-resize |
+| `columnSelectable: true` | Allow users to show/hide columns |
+| `selecting: true` | Enable row selection |
+| `multiselect: true` | Allow multi-row selection |
+| `selectingCheckboxes: true` | Show checkbox column for selection |
+| `progressBarClass` | CSS class for the loading progress bar |
 
 ---
 
-## Detailed Guides
+## File Locations
 
-- [Bootstrap 5](bootstrap5.md) — Full setup with Bootstrap 5
-- [Custom Adapter](custom-adapter.md) — Build your own adapter from scratch
+```
+dev/
+├── jquery.jtable-vnext.js          ← jTable core (all themes)
+└── ui/
+    ├── bootstrap/
+    │   ├── jquery.jtable.ui.bootstrap-4.js
+    │   ├── jquery.jtable.ui.bootstrap-5.js
+    │   ├── jtable.ui.bootstrap-4.css
+    │   └── jtable.ui.bootstrap-5.css
+    ├── Bulma/
+    │   ├── jquery.jtable.ui.bulma.js
+    │   └── jtable.ui.bulma-ui.css
+    ├── Fomantic-UI/
+    │   ├── jquery.jtable.ui.fomantic-ui.js
+    │   └── jtable.ui.fomantic.css
+    ├── Semantic-Ui/
+    │   ├── jquery.jtable.ui.semantic-ui.js
+    │   └── jtable.ui.semantic-ui.css
+    ├── Materialize-UI/
+    │   ├── jquery.jtable.ui.materialize-ui.js
+    │   └── jtable.ui.materialize.css
+    ├── UIKit-UI/
+    │   ├── jquery.jtable.ui.uikit-ui.js
+    │   └── jtable.ui.uikit-ui.css
+    └── legacy/
+        └── jquery.jtable.ui.legacy-ui.js
+```
