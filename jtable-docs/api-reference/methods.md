@@ -6,27 +6,6 @@ All methods are called on a jTable instance using the jQuery plugin syntax:
 $('#MyTableContainer').jtable('methodName', arg1, arg2, ...);
 ```
 
-**Table of Contents**
-
-- [addRecord](#addrecord)
-- [changeColumnVisibility](#changecolumnvisibility)
-- [closeChildRow](#closechildrow)
-- [closeChildTable](#closechildtable)
-- [deleteRecord](#deleterecord)
-- [deleteRows](#deleterows)
-- [destroy](#destroy)
-- [getChildRow](#getchildrow)
-- [getRowByKey](#getrowbykey)
-- [isChildRowOpen](#ischildrowopen)
-- [load](#load)
-- [openChildRow](#openchildrow)
-- [openChildTable](#openchildtable)
-- [reload](#reload)
-- [selectedRows](#selectedrows)
-- [selectRows](#selectrows)
-- [showCreateForm](#showcreateform)
-- [updateRecord](#updaterecord)
-
 ---
 
 ## addRecord(options)

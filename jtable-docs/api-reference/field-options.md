@@ -10,28 +10,6 @@ fields: {
 }
 ```
 
-**Table of Contents**
-
-- [columnResizable](#columnresizable)
-- [create](#create)
-- [edit](#edit)
-- [defaultValue](#defaultvalue)
-- [dependsOn](#dependson)
-- [display](#display)
-- [input](#input)
-- [inputClass](#inputclass)
-- [inputTitle](#inputtitle)
-- [key](#key)
-- [list](#list)
-- [listClass](#listclass)
-- [options](#options)
-- [optionsSorting](#optionssorting)
-- [sorting](#sorting)
-- [title](#title)
-- [type](#type)
-- [visibility](#visibility)
-- [width](#width)
-
 ---
 
 ## Option Reference

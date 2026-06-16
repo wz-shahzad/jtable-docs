@@ -11,22 +11,6 @@ $('#MyTableContainer').jtable({
 });
 ```
 
-**Table of Contents**
-
-- [closeRequested](#closerequested)
-- [formClosed](#formclosed)
-- [formCreated](#formcreated)
-- [formSubmitting](#formsubmitting)
-- [loadingRecords](#loadingrecords)
-- [recordAdded](#recordadded)
-- [recordDeleted](#recorddeleted)
-- [recordsLoaded](#recordsloaded)
-- [recordUpdated](#recordupdated)
-- [rowInserted](#rowinserted)
-- [rowsRemoved](#rowsremoved)
-- [rowUpdated](#rowupdated)
-- [selectionChanged](#selectionchanged)
-
 ---
 
 ## closeRequested(event, data)
