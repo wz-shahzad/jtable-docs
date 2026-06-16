@@ -1,10 +1,10 @@
-# jTable Documentation
+# Welcome
 
 Welcome to the official documentation for **jTable** — a jQuery plugin for building AJAX-powered CRUD tables with minimal effort.
 
 > This is the enhanced version of jTable with new UI themes and adapter support including Bootstrap 5, Bulma, Semantic UI, and more.
 
----
+***
 
 ## What is jTable?
 
@@ -31,17 +31,10 @@ $('#StudentsTable').jtable({
 $('#StudentsTable').jtable('load');
 ```
 
----
+***
 
 ## Where to Start
 
-<table>
-  <tr>
-    <td><strong>🚀 New to jTable?</strong><br/>Start with the <a href="getting-started/introduction.md">Introduction</a> and follow the Quick Start guide.</td>
-    <td><strong>📖 Looking for a specific option?</strong><br/>Jump to the <a href="api-reference/overview.md">API Reference</a>.</td>
-  </tr>
-  <tr>
-    <td><strong>🎨 Setting up a theme?</strong><br/>See the <a href="themes-ui/overview.md">Themes & UI</a> section.</td>
-    <td><strong>⚡ Already know jTable?</strong><br/>Go straight to <a href="api-reference/methods.md">Methods</a> or <a href="api-reference/events.md">Events</a>.</td>
-  </tr>
-</table>
+| <p><strong>🚀 New to jTable?</strong><br>Start with the <a href="/broken/pages/cnynfHqAcsJ8yixXFgB1">Introduction</a> and follow the Quick Start guide.</p> | <p><strong>📖 Looking for a specific option?</strong><br>Jump to the <a href="api-reference/overview.md">API Reference</a>.</p>                                  |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p><strong>🎨 Setting up a theme?</strong><br>See the <a href="themes-ui/overview.md">Themes &#x26; UI</a> section.</p>                                     | <p><strong>⚡ Already know jTable?</strong><br>Go straight to <a href="api-reference/methods.md">Methods</a> or <a href="api-reference/events.md">Events</a>.</p> |

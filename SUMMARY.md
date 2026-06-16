@@ -1,12 +1,7 @@
-# Table of Contents
+# Table of contents
 
+* [README](README.md)
 * [Welcome](jtable-docs/README.md)
-
-## Getting Started
-
-* [Installation](jtable-docs/getting-started/installation.md)
-* [Introduction](jtable-docs/getting-started/introduction.md)
-* [Quick Start](jtable-docs/getting-started/quick-start.md)
 
 ## Themes UI
 

@@ -1,4 +1,4 @@
-# Installation
+# README
 
 There are two ways to add jTable to your project — npm or direct script include.
 
@@ -94,4 +94,4 @@ If a table with a title bar and "Add new record" link appears, the installation 
 
 ## Next Steps
 
-* [Quick Start](jtable-docs/getting-started/quick-start.md) — build a complete CRUD table step by step
+* [Quick Start](/broken/pages/8wBy81mIx0V38BFC3MG0) — build a complete CRUD table step by step
