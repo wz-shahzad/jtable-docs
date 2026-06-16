@@ -23,3 +23,7 @@
 * [Methods](jtable-docs/api-reference/methods.md)
 * [Events](jtable-docs/api-reference/events.md)
 * [Localization](jtable-docs/api-reference/localization.md)
+
+## API References
+
+* [API Reference Combined](jtable-docs/api-reference-combined/api-reference-combined.md)
