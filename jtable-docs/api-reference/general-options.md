@@ -2,43 +2,6 @@
 
 General options control the overall behavior of a jTable instance.
 
-**Table of Contents**
-
-- [addRecordButton](#addrecordbutton)
-- [ajaxSettings](#ajaxsettings)
-- [animationsEnabled](#animationsenabled)
-- [columnResizable](#columnresizable)
-- [columnSelectable](#columnselectable)
-- [defaultDateFormat](#defaultdateformat)
-- [defaultSorting](#defaultsorting)
-- [deleteConfirmation](#deleteconfirmation)
-- [dialogShowEffect](#dialogshoweffect)
-- [dialogHideEffect](#dialoghideeffect)
-- [gotoPageArea](#gotopagearea)
-- [jqueryuiTheme](#jqueryuitheme)
-- [loadingAnimationDelay](#loadinganimationdelay)
-- [messages](#messages)
-- [multiselect](#multiselect)
-- [multiSorting](#multisorting)
-- [openChildAsAccordion](#openchildasaccordion)
-- [paging](#paging)
-- [pageList](#pagelist)
-- [pageSize](#pagesize)
-- [pageSizes](#pagesizes)
-- [pageSizeChangeArea](#pagesizechangearea)
-- [saveUserPreferences](#saveuserpreferences)
-- [selecting](#selecting)
-- [selectingCheckboxes](#selectingcheckboxes)
-- [selectOnRowClick](#selectonrowclick)
-- [showCloseButton](#showclosebutton)
-- [sorting](#sorting)
-- [tableId](#tableid)
-- [title](#title)
-- [toolbar](#toolbar)
-- [unAuthorizedRequestRedirectUrl](#unauthorizedrequestredirecturl)
-
----
-
 ## How to Set General Options
 
 ### Per-instance
