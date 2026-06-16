@@ -1,6 +1,6 @@
 # Table of Contents
 
-* [Welcome](jtable-docs/README.md)
+* [jTable Documentation](jtable-docs/README.md)
 
 ## Getting Started
 
