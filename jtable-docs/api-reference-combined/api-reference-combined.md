@@ -1,4 +1,4 @@
-# API Reference
+# API Reference Combined
 
 jTable ka complete reference — General Options, Field Options, Actions, Methods, Events, aur Localization sab ek jagah.
 

@@ -24,6 +24,6 @@
 * [Events](jtable-docs/api-reference/events.md)
 * [Localization](jtable-docs/api-reference/localization.md)
 
-## API References
+## API References Combined
 
-* [API Reference Combined](jtable-docs/api-reference-combined/api-reference-combined.md)
+* [API Reference](jtable-docs/api-reference-combined/api-reference-combined.md)
