@@ -10,8 +10,6 @@ fields: {
 }
 ```
 
----
-
 ## Option Reference
 
 ### columnResizable

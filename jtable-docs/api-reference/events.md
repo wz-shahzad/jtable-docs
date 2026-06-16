@@ -11,8 +11,6 @@ $('#MyTableContainer').jtable({
 });
 ```
 
----
-
 ## closeRequested(event, data)
 
 Fired when the user clicks the table's close button or icon. The close button is only visible when [`showCloseButton`](./02-general-options.md#showclosebutton) is `true`.

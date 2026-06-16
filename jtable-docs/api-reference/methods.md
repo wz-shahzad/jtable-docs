@@ -6,8 +6,6 @@ All methods are called on a jTable instance using the jQuery plugin syntax:
 $('#MyTableContainer').jtable('methodName', arg1, arg2, ...);
 ```
 
----
-
 ## addRecord(options)
 
 Adds a new record to the table programmatically.
