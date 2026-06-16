@@ -10,10 +10,10 @@ jTable supports multiple CSS frameworks through a pluggable UI adapter system. E
 |---|---|---|---|---|
 | [Bootstrap 5](bootstrap5.md) | Bootstrap 5 | bootstrap-datepicker | ✅ | `jquery.jtable.ui.bootstrap-5.js` |
 | [Bootstrap 4](bootstrap4.md) | Bootstrap 4 | bootstrap-datepicker | ✅ | `jquery.jtable.ui.bootstrap-4.js` |
-| [Bulma](bulma.md) | Bulma 1.x | bulma-calendar | ❌ | `jquery.jtable.ui.bulma.js` |
-| [Fomantic UI](fomantic-ui.md) | Fomantic UI 2.9 | built-in | ❌ | `jquery.jtable.ui.fomantic-ui.js` |
-| [Semantic UI](semantic-ui.md) | Fomantic UI 2.5 | built-in | ❌ | `jquery.jtable.ui.semantic-ui.js` |
-| [UIkit](uikit.md) | UIkit 3 | flatpickr | ❌ | `jquery.jtable.ui.uikit-ui.js` |
+| [Bulma](bulma.md) | Bulma 1.x | bulma-calendar | ✅ | `jquery.jtable.ui.bulma.js` |
+| [Fomantic UI](fomantic-ui.md) | Fomantic UI 2.9 | built-in | ✅ | `jquery.jtable.ui.fomantic-ui.js` |
+| [Semantic UI](semantic-ui.md) | Fomantic UI 2.5 | built-in | ✅ | `jquery.jtable.ui.semantic-ui.js` |
+| [UIkit](uikit.md) | UIkit 3 | flatpickr | ✅ | `jquery.jtable.ui.uikit-ui.js` |
 | [Legacy](legacy.md) | jQuery UI | jQuery UI datepicker | ❌ | `jquery.jtable.ui.legacy-ui.js` |
 
 ---
