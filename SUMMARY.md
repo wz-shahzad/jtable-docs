@@ -11,15 +11,15 @@
 ***
 
 * [jTable Documentation](jtable-docs/README.md)
-  * [getting-started](jtable-docs/getting-started/README.md "Getting Started")
+  ## Getting Started
     * [Installation](jtable-docs/getting-started/installation.md)
     * [Introduction](jtable-docs/getting-started/introduction.md)
     * [Quick Start](jtable-docs/getting-started/quick-start.md)
-  * [themes-ui](jtable-docs/themes-ui/README.md "Themes UI")
+  ## Themes UI
     * [Bootstrap 5 Theme](jtable-docs/themes-ui/bootstrap5.md)
     * [Custom Adapter](jtable-docs/themes-ui/custom-adapter.md)
     * [Themes & UI Overview](jtable-docs/themes-ui/overview.md)
-  * [api-reference](jtable-docs/api-reference/README.md "API References")
+  ## API References
     * [General Options](jtable-docs/api-reference/general-options.md "General Options")
     * [Field Options](jtable-docs/api-reference/field-options.md "Field Options")
     * [Actions](jtable-docs/api-reference/actions.md "Actions")
