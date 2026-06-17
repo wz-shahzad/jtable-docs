@@ -10,7 +10,7 @@
 
 ## Getting Started Combined
 
-* [Installation](jtable-docs/getting-started-combined/getting-started.md)
+* [Getting Started](jtable-docs/getting-started-combined/getting-started.md)
 
 ## Themes UI
 
