@@ -1,228 +1,139 @@
-## Getting Started
+# Getting Started
 
-### Introduction
+## Introduction
 
-Here, I will examine a simple table implementation with **jTable**.
-Assume that you have a database table as shown below (For more complex
-tables, see samples in the [demo
-list](https://www.jtable.org/Demo)).
+Here, we will examine a simple table implementation with **jTable**. Assume that you have a database table as shown below. For more complex tables, see the samples in the [demo list](https://www.jtable.org/Demo).
 
-![Person DB
-Table](./Getting%20Started_files/personDbTable.png)
+<figure><img src="../../.gitbook/assets/personDbTable.png" alt=""><figcaption></figcaption></figure>
 
-Surely, you don't have to work with SQL Server, or even with a DBMS.
-jTable does not care about any server-side technology.
+Surely, you don't have to work with SQL Server, or even with a DBMS. jTable does not care about any server-side technology.
 
-### Dependencies
+## Dependencies
 
-**jTable** is depended on **jQuery** and **jQueryUI**. So, If you
-haven't yet, you must first download latest versions of these libraries
-from [jquery.com](http://www.jquery.com/).
+**jTable** depends on **jQuery** and **jQueryUI**. So, if you have not already done so, you must first download the latest versions of these libraries from [jquery.com](http://www.jquery.com/).
 
-### Downloading jTable
+## Downloading jTable
 
-You can download jTable from
-[Downloads](https://www.jtable.org/Home/Downloads) section. Also, you
-can get it from [nuget](https://nuget.org/packages/jTable/) if you are
-using Visual Studio.
+You can download jTable from the [Downloads](https://www.jtable.org/Home/Downloads) section. You can also get it from [NuGet](https://nuget.org/packages/jTable/) if you are using Visual Studio.
 
-After downloading, you will have a folder structure like that:
+After downloading, you will have a folder structure like this:
 
-![jTable
-folders](./Getting%20Started_files/jtable-folders.png)
-
-### Creating Header
+## Creating Header
 
 Add these lines to the **HEAD** section of your HTML document:
 
-You can select any theme and color schema in themes folder.
+You can select any theme and color scheme in the themes folder.
 
-NOTE: You must also add needed **jQuery** and **jQueryUI** JavaScript
-and CSS files before importing jTable files.
+NOTE: You must also add the required **jQuery** and **jQueryUI** JavaScript and CSS files before importing jTable files.
 
-### Creating a container
+## Creating a container
 
-jTable needs only a container element for your table.
+jTable only needs a container element for your table.
 
-Container element can be a simple **div** element as shown above.
+The container element can be a simple **div** element, as shown above.
 
-### Creating a jTable instance
+## Creating a jTable instance
 
-Add these JavaScript codes to your page:
+Add this JavaScript code to your page:
 
-All HTML and JavaScript codes ready! We set **title** of the table,
-**action URL**s to perform AJAX operations on server and **structure**
-of our **Person record fields**. If you run the page now, you will see
-the table without data:
+The HTML and JavaScript code is now ready. We set the **title** of the table, the **action URLs** to perform AJAX operations on the server, and the **structure** of our **Person** record fields. If you run the page now, you will see the table without data:
 
-![Empty jTable
-example](./Getting%20Started_files/person-jtable-empty.png)
-If you click '+ Add new record' lick, a dialog is automatically
-created:
+If you click the '+ Add new record' link, a dialog is automatically created:
 
-![jTable add record form
-dialog](./Getting%20Started_files/jtable-add-record-form.jpg)
-We must create **server side** codes to be able to run the page.
+We must create **server-side** code to be able to run the page.
 
-### Creating the list action
+## Creating the list action
 
-[**listAction**](https://www.jtable.org/ApiReference#act-listAction)
-option of jTable is used to get data to create table of records. It's a
-regular URL as '/GettingStarted/PersonList'. If you are working with
-PHP, It maybe '/GettingStarted/PersonList.php' \...etc. jTable
-performs an ajax POST request to this URL to get records when you call
-the [**load**](https://www.jtable.org/ApiReference#met-load) method.
+The [**listAction**](https://www.jtable.org/ApiReference#act-listAction) option of jTable is used to get data to create a table of records. It is a regular URL such as '/GettingStarted/PersonList'. If you are working with PHP, it might be '/GettingStarted/PersonList.php', and so on. jTable performs an AJAX POST request to this URL to get records when you call the [**load**](https://www.jtable.org/ApiReference#met-load) method.
 
-**load** method can be called after table initialized.
+The **load** method can be called after the table is initialized.
 
-All server actions those are used by jTable must return a **JSON
-object**. This is a sample return value for this example:
+All server actions used by jTable must return a **JSON object**. This is a sample return value for this example:
 
-**Don't worry about creating a JSON object. All common server side
-technologies have ability to create these objects easily (see samples
-below)**.
+**Don't worry about creating a JSON object. All common server side technologies have ability to create these objects easily (see samples below)**.
 
-**Result** property can be \"**OK**\" or \"**ERROR**\". If it is \"OK\",
-**Records** property must be an array of records. If it is \"ERROR\", a
-**Message** property can explain reason of the error to show to the
-user. You can take a look at the [API reference
-document](https://www.jtable.org/ApiReference#act-listAction) to see
-supported date formats.
+The **Result** property can be "**OK**" or "**ERROR**". If it is "**OK**", the **Records** property must be an array of records. If it is "**ERROR**", a **Message** property can explain the reason for the error to the user. You can take a look at the [API reference document](https://www.jtable.org/ApiReference#act-listAction) to see the supported date formats.
 
-Here, there are sample server-side codes for **listAction** in some
-common server-side technologies:
+Here are sample server-side code examples for **listAction** in some common server-side technologies:
 
--   [ASP.NET
-    MVC](https://www.jtable.org/GettingStarted#tabs-mvc-list)
--   [ASP.NET Web
-    Forms](https://www.jtable.org/GettingStarted#tabs-webforms-list)
--   [PHP](https://www.jtable.org/GettingStarted#tabs-php-list)
+* [ASP.NET MVC](https://www.jtable.org/GettingStarted#tabs-mvc-list)
+* [ASP.NET Web Forms](https://www.jtable.org/GettingStarted#tabs-webforms-list)
+* [PHP](https://www.jtable.org/GettingStarted#tabs-php-list)
 
-Download all samples from [download
-page](https://www.jtable.org/Home/Downloads).
+Download all samples from [download page](https://www.jtable.org/Home/Downloads).
 
-Download all samples from [download
-page](https://www.jtable.org/Home/Downloads).
+Download all samples from [download page](https://www.jtable.org/Home/Downloads).
 
-Download all samples from [download
-page](https://www.jtable.org/Home/Downloads).
-So, now we can run the page and see the result:
+Download all samples from [download page](https://www.jtable.org/Home/Downloads). Now we can run the page and see the result:
 
-![Person jTable with
-data](./Getting%20Started_files/jtable-example-with-data.png)
-### Creating a new record
+## Creating a new record
 
-When we click the '**+ Add new record**' link below the table, a
-**create record form** is **automatically** generated by jTable:
+When we click the '**+ Add new record**' link below the table, a **create record form** is **automatically** generated by jTable:
 
-![jTable add record form dialog with
-data](./Getting%20Started_files/jtable-add-record-form-with-data.png)
-When try to add a person, we get an error since we haven't implement
-**createAction** yet! **createAction** option of jTable is used to
-submit (**POST**) a 'create record form' to the server. When you press
-Save button, a POST data is sent to server as shown below:
+When we try to add a person, we get an error since we have not implemented **createAction** yet. The **createAction** option of jTable is used to submit a create record form with **POST** to the server. When you press the Save button, POST data is sent to the server as shown below:
 
-In the server side, you can save new person to the database.
-createAction **must return** newly created record (as JSON object)! A
-**sample** return value for createAction can be:
+On the server side, you can save a new person to the database. **createAction** **must return** the newly created record as a JSON object. A **sample** return value for **createAction** can be:
 
-Same as all jTable actions, returning object must contain a **Result**
-property that's value can be \"**OK**\" or \"**ERROR**\". If it's
-\"OK\", **Record** property is the created record.
+As with all jTable actions, the returned object must contain a **Result** property whose value can be "**OK**" or "**ERROR**". If it is "**OK**", the **Record** property is the created record.
 
-Here, there are sample server-side codes for **createAction** in some
-common server-side technologies:
+Here are sample server-side code examples for **createAction** in some common server-side technologies:
 
--   [ASP.NET
-    MVC](https://www.jtable.org/GettingStarted#tabs-mvc-create)
--   [ASP.NET Web
-    Forms](https://www.jtable.org/GettingStarted#tabs-webforms-create)
--   [PHP](https://www.jtable.org/GettingStarted#tabs-php-create)
+* [ASP.NET MVC](https://www.jtable.org/GettingStarted#tabs-mvc-create)
+* [ASP.NET Web Forms](https://www.jtable.org/GettingStarted#tabs-webforms-create)
+* [PHP](https://www.jtable.org/GettingStarted#tabs-php-create)
 
-Download all samples from [download
-page](https://www.jtable.org/Home/Downloads).
+Download all samples from [download page](https://www.jtable.org/Home/Downloads).
 
-Download all samples from [download
-page](https://www.jtable.org/Home/Downloads).
+Download all samples from [download page](https://www.jtable.org/Home/Downloads).
 
-Download all samples from [download
-page](https://www.jtable.org/Home/Downloads).
-When server successfully saves the new record, same record is
-automatically added to the jTable with an animation.
+Download all samples from [download page](https://www.jtable.org/Home/Downloads). When the server successfully saves the new record, that same record is automatically added to the jTable with an animation.
 
-### Editing/Updating a record
+## Editing/Updating a record
 
-When we click **edit icon** for a record, a **edit record form** is
-**automatically** generated by jTable:
+When we click the **edit icon** for a record, an **edit record form** is **automatically** generated by jTable:
 
-![jTable edit record form
-dialog](./Getting%20Started_files/jtable-edit-form-dialog.png)
-When we change age of Dougles Adams and **save** the form, a **POST**
-operation made to **updateAction** URL with fallowing values:
+When we change the age of Dougles Adams and **save** the form, a **POST** operation is made to the **updateAction** URL with the following values:
 
-In the server side, you can **update fields** in the database table for
-PersonId=2. updateAction must return a JSON object like that:
+On the server side, you can **update fields** in the database table for PersonId=2. **updateAction** must return a JSON object like this:
 
-If **Result** is \"ERROR\", a **Message** property can explain the error
-reason. If Result is \"OK\", jTable updates cells on the table in the
-page with an animation.
+If **Result** is "**ERROR**", a **Message** property can explain the reason for the error. If **Result** is "**OK**", jTable updates the cells in the table on the page with an animation.
 
-Here, there are sample server-side codec for **updateAction** in some
-common server-side technologies:
+Here are sample server-side code examples for **updateAction** in some common server-side technologies:
 
--   [ASP.NET
-    MVC](https://www.jtable.org/GettingStarted#tabs-mvc-update)
--   [ASP.NET Web
-    Forms](https://www.jtable.org/GettingStarted#tabs-webforms-update)
--   [PHP](https://www.jtable.org/GettingStarted#tabs-php-update)
+* [ASP.NET MVC](https://www.jtable.org/GettingStarted#tabs-mvc-update)
+* [ASP.NET Web Forms](https://www.jtable.org/GettingStarted#tabs-webforms-update)
+* [PHP](https://www.jtable.org/GettingStarted#tabs-php-update)
 
-Download all samples from [download
-page](https://www.jtable.org/Home/Downloads).
+Download all samples from [download page](https://www.jtable.org/Home/Downloads).
 
-Download all samples from [download
-page](https://www.jtable.org/Home/Downloads).
+Download all samples from [download page](https://www.jtable.org/Home/Downloads).
 
-Download all samples from [download
-page](https://www.jtable.org/Home/Downloads).
-### Deleting a record
+Download all samples from [download page](https://www.jtable.org/Home/Downloads).
 
-When we click **delete icon** for a record, a confirmation dialog is
-shown to the user by jTable (confirmation is optional but open as
-defalut) :
+## Deleting a record
 
-![jTable delete confirmation
-dialog](./Getting%20Started_files/jtable-delete-confirmation-dialog.png)
-When we click the delete button, a POST operation made to deleteAction
-URL with fallowing values:
+When we click the **delete icon** for a record, a confirmation dialog is shown to the user by jTable. Confirmation is optional, but it is enabled by default:
 
-You can delete the record 3 in the server. deleteAction also returns a
-JSON object like that:
+When we click the delete button, a POST operation is made to the **deleteAction** URL with the following values:
 
-If **Result** is \"ERROR\", a **Message** property can explain the error
-reason. If Result is \"OK\", jTable deletes related row from the table
-in the page with an animation.
+You can delete record 3 on the server. **deleteAction** also returns a JSON object like this:
 
-Here, there are sample server-side codes for **deleteAction** in some
-common server-side technologies:
+If **Result** is "**ERROR**", a **Message** property can explain the reason for the error. If **Result** is "**OK**", jTable deletes the related row from the table on the page with an animation.
 
--   [ASP.NET
-    MVC](https://www.jtable.org/GettingStarted#tabs-mvc-delete)
--   [ASP.NET Web
-    Forms](https://www.jtable.org/GettingStarted#tabs-webforms-delete)
--   [PHP](https://www.jtable.org/GettingStarted#tabs-php-delete)
+Here are sample server-side code examples for **deleteAction** in some common server-side technologies:
 
-Download all samples from [download
-page](https://www.jtable.org/Home/Downloads).
+* [ASP.NET MVC](https://www.jtable.org/GettingStarted#tabs-mvc-delete)
+* [ASP.NET Web Forms](https://www.jtable.org/GettingStarted#tabs-webforms-delete)
+* [PHP](https://www.jtable.org/GettingStarted#tabs-php-delete)
 
-Download all samples from [download
-page](https://www.jtable.org/Home/Downloads).
+Download all samples from [download page](https://www.jtable.org/Home/Downloads).
 
-Download all samples from [download
-page](https://www.jtable.org/Home/Downloads).
-### The result
+Download all samples from [download page](https://www.jtable.org/Home/Downloads).
 
-Here, the result jTable instance. Try it yourself:
-Table of people
+Download all samples from [download page](https://www.jtable.org/Home/Downloads).
+
+## The result
+
+Here is the resulting jTable instance. Try it yourself: Table of people
 
 +=============+=============+=============+=============+=============+
-
