@@ -8,6 +8,10 @@
 * [Introduction](jtable-docs/getting-started/introduction.md)
 * [Quick Start](jtable-docs/getting-started/quick-start.md)
 
+## Getting Started Combined
+
+* [Installation](jtable-docs/getting-started-combined/getting-started.md)
+
 ## Themes UI
 
 * [Overview](jtable-docs/themes-ui/overview.md)
@@ -32,4 +36,4 @@
 
 ## API References Combined
 
-* [API Reference](jtable-docs/api-reference-combined/api-reference-combined.md)
+* [API Reference](jtable-docs/api-reference-combined/api-reference.md)
