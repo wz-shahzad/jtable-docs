@@ -87,7 +87,7 @@ Add this JavaScript code to your page:
 </script>
 ```
 
-The HTML and JavaScript code is now ready. We set the **title** of the table, the **action URLs** to perform AJAX operations on the server, and the **structure** of our **Person** record fields. If you run the page now, you will see the table without data:
+All HTML and JavaScript codes ready! We set **title** of the table, **action URL**s to perform AJAX operations on server and **structure** of our **Person record fields**. If you run the page now, you will see the table without data:
 
 <figure><img src="../../.gitbook/assets/person-jtable-empty.png" alt=""><figcaption></figcaption></figure>
 
@@ -99,15 +99,15 @@ We must create **server-side** code to be able to run the page.
 
 ## Creating the list action
 
-The [**listAction**](https://www.jtable.org/ApiReference#act-listAction) option of jTable is used to get data to create a table of records. It is a regular URL such as '/GettingStarted/PersonList'. If you are working with PHP, it might be '/GettingStarted/PersonList.php', and so on. jTable performs an AJAX POST request to this URL to get records when you call the [**load**](https://www.jtable.org/ApiReference#met-load) method.
+[**listAction**](https://www.jtable.org/ApiReference#act-listAction) option of jTable is used to get data to create table of records. It's a regular URL as '/GettingStarted/PersonList'. If you are working with PHP, It maybe '/GettingStarted/PersonList.php' ...etc. jTable performs an ajax POST request to this URL to get records when you call the [**load**](https://www.jtable.org/ApiReference#met-load) method.
 
-The **load** method can be called after the table is initialized.
+**load** method can be called after table initialized.
 
 ```html
 $('#PersonTableContainer').jtable('load');
 ```
 
-All server actions used by jTable must return a **JSON object**. This is a sample return value for this example:
+All server actions those are used by jTable must return a **JSON object**. This is a sample return value for this example:
 
 ```html
 {
@@ -123,7 +123,7 @@ All server actions used by jTable must return a **JSON object**. This is a sampl
 
 **Don't worry about creating a JSON object. All common server side technologies have ability to create these objects easily (see samples below)**.
 
-The **Result** property can be "**OK**" or "**ERROR**". If it is "**OK**", the **Records** property must be an array of records. If it is "**ERROR**", a **Message** property can explain the reason for the error to the user. You can take a look at the [API reference document](https://www.jtable.org/ApiReference#act-listAction) to see the supported date formats.
+**Result** property can be "**OK**" or "**ERROR**". If it is "OK", **Records** property must be an array of records. If it is "ERROR", a **Message** property can explain reason of the error to show to the user. You can take a look at the [API reference document](https://www.jtable.org/ApiReference#act-listAction) to see supported date formats.
 
 Here, there are sample server-side codes for **listAction** in some common server-side technologies:
 
