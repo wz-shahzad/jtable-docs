@@ -127,15 +127,71 @@ All server actions those are used by jTable must return a **JSON object**. This 
 
 Here, there are sample server-side codes for **listAction** in some common server-side technologies:
 
-* [ASP.NET MVC](https://www.jtable.org/GettingStarted#tabs-mvc-list)
-* [ASP.NET Web Forms](https://www.jtable.org/GettingStarted#tabs-webforms-list)
-* [PHP](https://www.jtable.org/GettingStarted#tabs-php-list)
+{% tabs %}
+{% tab title="ASP.NET MVC" %}
+{% code lineNumbers="true" %}
+```csharp
+[HttpPost]
+public JsonResult PersonList()
+{
+    try
+    {
+        List<Person> persons = _repository.PersonRepository.GetAllPeople();
+        return Json(new { Result = "OK", Records = persons });
+    }
+    catch (Exception ex)
+    {
+        return Json(new { Result = "ERROR", Message = ex.Message });
+    }
+}
+```
+{% endcode %}
+{% endtab %}
 
+{% tab title="ASP.NET Web Forms" %}
+{% code lineNumbers="true" %}
+```csharp
+[WebMethod(EnableSession = true)]
+public static object PersonList()
+{
+    try
+    {
+        List<Person> persons = _repository.PersonRepository.GetAllPeople();
+        return new { Result = "OK", Records = persons };
+    }
+    catch (Exception ex)
+    {
+        return new { Result = "ERROR", Message = ex.Message };
+    }
+}
+```
+{% endcode %}
+{% endtab %}
 
+{% tab title="PHP" %}
+{% code lineNumbers="true" %}
+```php
+//Get records from database
+$result = mysql_query("SELECT * FROM people;");
+ 
+//Add all records to an array
+$rows = array();
+while($row = mysql_fetch_array($result))
+{
+    $rows[] = $row;
+}
+ 
+//Return result to jTable
+$jTableResult = array();
+$jTableResult['Result'] = "OK";
+$jTableResult['Records'] = $rows;
+print json_encode($jTableResult);
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 Download all samples from [download page](https://www.jtable.org/Home/Downloads).
-
-
 
 Now we can run the page and see the result:
 
@@ -166,13 +222,68 @@ Same as all jTable actions, returning object must contain a **Result** property 
 
 Here, there are sample server-side codes for **createAction** in some common server-side technologies:
 
-* [ASP.NET MVC](https://www.jtable.org/GettingStarted#tabs-mvc-create)
-* [ASP.NET Web Forms](https://www.jtable.org/GettingStarted#tabs-webforms-create)
-* [PHP](https://www.jtable.org/GettingStarted#tabs-php-create)
+{% tabs %}
+{% tab title="ASP.NET MVC" %}
+{% code lineNumbers="true" %}
+```csharp
+[HttpPost]
+public JsonResult CreatePerson(Person person)
+{
+    try
+    {
+        Person addedPerson = _repository.PersonRepository.AddPerson(person);
+        return Json(new { Result = "OK", Record = addedPerson });
+    }
+    catch (Exception ex)
+    {
+        return Json(new { Result = "ERROR", Message = ex.Message });
+    }
+}
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="ASP.NET Web Forms" %}
+{% code lineNumbers="true" %}
+```csharp
+[WebMethod(EnableSession = true)]
+public static object CreatePerson(Person record)
+{
+    try
+    {
+        Person addedPerson = _repository.PersonRepository.AddPerson(record);
+        return new { Result = "OK", Record = addedPerson };
+    }
+    catch (Exception ex)
+    {
+        return new { Result = "ERROR", Message = ex.Message };
+    }
+}
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="PHP" %}
+{% code lineNumbers="true" %}
+```php
+//Insert record into database
+$result = mysql_query("INSERT INTO people(Name, Age, RecordDate) VALUES('" . $_POST["Name"] . "', " . $_POST["Age"] . ",now());");
+ 
+//Get last inserted record (to return to jTable)
+$result = mysql_query("SELECT * FROM people WHERE PersonId = LAST_INSERT_ID();");
+$row = mysql_fetch_array($result);
+ 
+//Return result to jTable
+$jTableResult = array();
+$jTableResult['Result'] = "OK";
+$jTableResult['Record'] = $row;
+print json_encode($jTableResult);
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 Download all samples from [download page](https://www.jtable.org/Home/Downloads).
-
-
 
 When server successfully saves the new record, same record is automatically added to the jTable with an animation.
 
@@ -198,9 +309,61 @@ If **Result** is "**ERROR**", a **Message** property can explain the reason for 
 
 Here are sample server-side code examples for **updateAction** in some common server-side technologies:
 
-* [ASP.NET MVC](https://www.jtable.org/GettingStarted#tabs-mvc-update)
-* [ASP.NET Web Forms](https://www.jtable.org/GettingStarted#tabs-webforms-update)
-* [PHP](https://www.jtable.org/GettingStarted#tabs-php-update)
+{% tabs %}
+{% tab title="ASP.NET MVC" %}
+{% code lineNumbers="true" %}
+```csharp
+[HttpPost]
+public JsonResult UpdatePerson(Person person)
+{
+    try
+    {
+        _repository.PersonRepository.UpdatePerson(person);
+        return Json(new { Result = "OK" });
+    }
+    catch (Exception ex)
+    {
+        return Json(new { Result = "ERROR", Message = ex.Message });
+    }
+}
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="ASP.NET Web Forms" %}
+{% code lineNumbers="true" %}
+```csharp
+[WebMethod(EnableSession = true)]
+public static object UpdatePerson(Person record)
+{
+    try
+    {
+        _repository.PersonRepository.UpdatePerson(record);
+        return new { Result = "OK" };
+    }
+    catch (Exception ex)
+    {
+        return new { Result = "ERROR", Message = ex.Message };
+    }
+}
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="PHP" %}
+{% code lineNumbers="true" %}
+```php
+//Update record in database
+$result = mysql_query("UPDATE people SET Name = '" . $_POST["Name"] . "', Age = " . $_POST["Age"] . " WHERE PersonId = " . $_POST["PersonId"] . ";");
+ 
+//Return result to jTable
+$jTableResult = array();
+$jTableResult['Result'] = "OK";
+print json_encode($jTableResult);
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 Download all samples from [download page](https://www.jtable.org/Home/Downloads).
 
@@ -229,9 +392,61 @@ If **Result** is "**ERROR**", a **Message** property can explain the reason for 
 
 Here are sample server-side code examples for **deleteAction** in some common server-side technologies:
 
-* [ASP.NET MVC](https://www.jtable.org/GettingStarted#tabs-mvc-delete)
-* [ASP.NET Web Forms](https://www.jtable.org/GettingStarted#tabs-webforms-delete)
-* [PHP](https://www.jtable.org/GettingStarted#tabs-php-delete)
+{% tabs %}
+{% tab title="ASP.NET MVC" %}
+{% code lineNumbers="true" %}
+```csharp
+[HttpPost]
+public JsonResult DeletePerson(int personId)
+{
+    try
+    {
+        _repository.PersonRepository.DeletePerson(personId);
+        return Json(new { Result = "OK" });
+    }
+    catch (Exception ex)
+    {
+        return Json(new { Result = "ERROR", Message = ex.Message });
+    }
+}
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="ASP.NET Web Forms" %}
+{% code lineNumbers="true" %}
+```csharp
+[WebMethod(EnableSession = true)]
+public static object DeletePerson(int PersonId)
+{
+    try
+    {
+        _repository.PersonRepository.DeletePerson(PersonId);
+        return new { Result = "OK" };
+    }
+    catch (Exception ex)
+    {
+        return new { Result = "ERROR", Message = ex.Message };
+    }
+}
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="PHP" %}
+{% code lineNumbers="true" %}
+```php
+//Delete from database
+$result = mysql_query("DELETE FROM people WHERE PersonId = " . $_POST["PersonId"] . ";");
+ 
+//Return result to jTable
+$jTableResult = array();
+$jTableResult['Result'] = "OK";
+print json_encode($jTableResult);
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
 
 Download all samples from [download page](https://www.jtable.org/Home/Downloads).
 
