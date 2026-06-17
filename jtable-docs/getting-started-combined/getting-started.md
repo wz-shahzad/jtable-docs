@@ -18,9 +18,19 @@ You can download jTable from the [Downloads](https://www.jtable.org/Home/Downloa
 
 After downloading, you will have a folder structure like this:
 
+<figure><img src="../../.gitbook/assets/jtable-folders.png" alt=""><figcaption></figcaption></figure>
+
 ## Creating Header
 
 Add these lines to the **HEAD** section of your HTML document:
+
+```html
+<!-- Include one of jTable styles. -->
+<link href="/jtable/themes/metro/blue/jtable.min.css" rel="stylesheet" type="text/css" />
+ 
+<!-- Include jTable script file. -->
+<script src="/jtable/jquery.jtable.min.js" type="text/javascript"></script>
+```
 
 You can select any theme and color scheme in the themes folder.
 
@@ -30,15 +40,60 @@ NOTE: You must also add the required **jQuery** and **jQueryUI** JavaScript and 
 
 jTable only needs a container element for your table.
 
-The container element can be a simple **div** element, as shown above.
+```html
+<div id="PersonTableContainer"></div>
+```
+
+Container element can be a simple **div** element, as shown above.
 
 ## Creating a jTable instance
 
 Add this JavaScript code to your page:
 
+```html
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#PersonTableContainer').jtable({
+            title: 'Table of people',
+            actions: {
+                listAction: '/GettingStarted/PersonList',
+                createAction: '/GettingStarted/CreatePerson',
+                updateAction: '/GettingStarted/UpdatePerson',
+                deleteAction: '/GettingStarted/DeletePerson'
+            },
+            fields: {
+                PersonId: {
+                    key: true,
+                    list: false
+                },
+                Name: {
+                    title: 'Author Name',
+                    width: '40%'
+                },
+                Age: {
+                    title: 'Age',
+                    width: '20%'
+                },
+                RecordDate: {
+                    title: 'Record date',
+                    width: '30%',
+                    type: 'date',
+                    create: false,
+                    edit: false
+                }
+            }
+        });
+    });
+</script>
+```
+
 The HTML and JavaScript code is now ready. We set the **title** of the table, the **action URLs** to perform AJAX operations on the server, and the **structure** of our **Person** record fields. If you run the page now, you will see the table without data:
 
+<figure><img src="../../.gitbook/assets/person-jtable-empty.png" alt=""><figcaption></figcaption></figure>
+
 If you click the '+ Add new record' link, a dialog is automatically created:
+
+<figure><img src="../../.gitbook/assets/jtable-add-record-form.jpg" alt=""><figcaption></figcaption></figure>
 
 We must create **server-side** code to be able to run the page.
 
@@ -48,35 +103,68 @@ The [**listAction**](https://www.jtable.org/ApiReference#act-listAction) option 
 
 The **load** method can be called after the table is initialized.
 
+```html
+$('#PersonTableContainer').jtable('load');
+```
+
 All server actions used by jTable must return a **JSON object**. This is a sample return value for this example:
+
+```html
+{
+ "Result":"OK",
+ "Records":[
+  {"PersonId":1,"Name":"Benjamin Button","Age":17,"RecordDate":"\/Date(1320259705710)\/"},
+  {"PersonId":2,"Name":"Douglas Adams","Age":42,"RecordDate":"\/Date(1320259705710)\/"},
+  {"PersonId":3,"Name":"Isaac Asimov","Age":26,"RecordDate":"\/Date(1320259705710)\/"},
+  {"PersonId":4,"Name":"Thomas More","Age":65,"RecordDate":"\/Date(1320259705710)\/"}
+ ]
+}
+```
 
 **Don't worry about creating a JSON object. All common server side technologies have ability to create these objects easily (see samples below)**.
 
 The **Result** property can be "**OK**" or "**ERROR**". If it is "**OK**", the **Records** property must be an array of records. If it is "**ERROR**", a **Message** property can explain the reason for the error to the user. You can take a look at the [API reference document](https://www.jtable.org/ApiReference#act-listAction) to see the supported date formats.
 
-Here are sample server-side code examples for **listAction** in some common server-side technologies:
+Here, there are sample server-side codes for **listAction** in some common server-side technologies:
 
 * [ASP.NET MVC](https://www.jtable.org/GettingStarted#tabs-mvc-list)
 * [ASP.NET Web Forms](https://www.jtable.org/GettingStarted#tabs-webforms-list)
 * [PHP](https://www.jtable.org/GettingStarted#tabs-php-list)
 
-Download all samples from [download page](https://www.jtable.org/Home/Downloads).
+
 
 Download all samples from [download page](https://www.jtable.org/Home/Downloads).
 
-Download all samples from [download page](https://www.jtable.org/Home/Downloads). Now we can run the page and see the result:
+
+
+Now we can run the page and see the result:
+
+<figure><img src="../../.gitbook/assets/jtable-example-with-data.png" alt=""><figcaption></figcaption></figure>
 
 ## Creating a new record
 
 When we click the '**+ Add new record**' link below the table, a **create record form** is **automatically** generated by jTable:
 
+<figure><img src="../../.gitbook/assets/jtable-add-record-form-with-data.png" alt=""><figcaption></figcaption></figure>
+
 When we try to add a person, we get an error since we have not implemented **createAction** yet. The **createAction** option of jTable is used to submit a create record form with **POST** to the server. When you press the Save button, POST data is sent to the server as shown below:
+
+```html
+Name=Dan+Brown&Age=55
+```
 
 On the server side, you can save a new person to the database. **createAction** **must return** the newly created record as a JSON object. A **sample** return value for **createAction** can be:
 
-As with all jTable actions, the returned object must contain a **Result** property whose value can be "**OK**" or "**ERROR**". If it is "**OK**", the **Record** property is the created record.
+```html
+{
+ "Result":"OK",
+ "Record":{"PersonId":5,"Name":"Dan Brown","Age":55,"RecordDate":"\/Date(1320262185197)\/"}
+}
+```
 
-Here are sample server-side code examples for **createAction** in some common server-side technologies:
+Same as all jTable actions, returning object must contain a **Result** property that's value can be "**OK**" or "**ERROR**". If it's "OK", **Record** property is the created record.
+
+Here, there are sample server-side codes for **createAction** in some common server-side technologies:
 
 * [ASP.NET MVC](https://www.jtable.org/GettingStarted#tabs-mvc-create)
 * [ASP.NET Web Forms](https://www.jtable.org/GettingStarted#tabs-webforms-create)
@@ -84,17 +172,27 @@ Here are sample server-side code examples for **createAction** in some common se
 
 Download all samples from [download page](https://www.jtable.org/Home/Downloads).
 
-Download all samples from [download page](https://www.jtable.org/Home/Downloads).
 
-Download all samples from [download page](https://www.jtable.org/Home/Downloads). When the server successfully saves the new record, that same record is automatically added to the jTable with an animation.
+
+When server successfully saves the new record, same record is automatically added to the jTable with an animation.
 
 ## Editing/Updating a record
 
 When we click the **edit icon** for a record, an **edit record form** is **automatically** generated by jTable:
 
+<figure><img src="../../.gitbook/assets/jtable-edit-form-dialog.png" alt=""><figcaption></figcaption></figure>
+
 When we change the age of Dougles Adams and **save** the form, a **POST** operation is made to the **updateAction** URL with the following values:
 
-On the server side, you can **update fields** in the database table for PersonId=2. **updateAction** must return a JSON object like this:
+```html
+PersonId=2&Name=Douglas+Adams&Age=43
+```
+
+In the server side, you can **update fields** in the database table for PersonId=2. updateAction must return a JSON object like that:
+
+```html
+{"Result":"OK"}
+```
 
 If **Result** is "**ERROR**", a **Message** property can explain the reason for the error. If **Result** is "**OK**", jTable updates the cells in the table on the page with an animation.
 
@@ -106,17 +204,26 @@ Here are sample server-side code examples for **updateAction** in some common se
 
 Download all samples from [download page](https://www.jtable.org/Home/Downloads).
 
-Download all samples from [download page](https://www.jtable.org/Home/Downloads).
-
-Download all samples from [download page](https://www.jtable.org/Home/Downloads).
-
 ## Deleting a record
 
 When we click the **delete icon** for a record, a confirmation dialog is shown to the user by jTable. Confirmation is optional, but it is enabled by default:
 
+<figure><img src="../../.gitbook/assets/jtable-delete-confirmation-dialog.png" alt=""><figcaption></figcaption></figure>
+
 When we click the delete button, a POST operation is made to the **deleteAction** URL with the following values:
 
-You can delete record 3 on the server. **deleteAction** also returns a JSON object like this:
+```html
+<!-- jQuery UI theme -->
+<link href="https://www.jtable.org/Content/themes/metroblue/jquery-ui.css" rel="stylesheet" />
+
+PersonId=3
+```
+
+You can delete the record 3 in the server. deleteAction also returns a JSON object like that:
+
+```html
+{"Result":"OK"}
+```
 
 If **Result** is "**ERROR**", a **Message** property can explain the reason for the error. If **Result** is "**OK**", jTable deletes the related row from the table on the page with an animation.
 
@@ -128,12 +235,8 @@ Here are sample server-side code examples for **deleteAction** in some common se
 
 Download all samples from [download page](https://www.jtable.org/Home/Downloads).
 
-Download all samples from [download page](https://www.jtable.org/Home/Downloads).
-
-Download all samples from [download page](https://www.jtable.org/Home/Downloads).
-
 ## The result
 
-Here is the resulting jTable instance. Try it yourself: Table of people
+Here, the result jTable instance. Try it yourself:
 
-+=============+=============+=============+=============+=============+
+<figure><img src="../../.gitbook/assets/Table-of-people.jpg" alt=""><figcaption></figcaption></figure>
