@@ -1,17 +1,5 @@
 ## Getting Started
 
--   [Introduction](#Introduction)
--   [Dependencies](#Dependencies)
--   [Downloading jTable](#Downloading)
--   [Creating header](#Header)
--   [Creating a container](#Container)
--   [Creating a jTable instance](#CreatejTable)
--   [Creating the list action](#ListAction)
--   [Creating a new record](#CreateAction)
--   [Editing/Updating a record](#UpdateAction)
--   [Deleting a record](#DeleteAction)
--   [The result](#Result)
-
 ### Introduction
 
 Here, I will examine a simple table implementation with **jTable**.
